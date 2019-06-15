@@ -1,2 +1,2 @@
-# Youtube_Thumbnail_Extractor
-Extract thumbnail from Youtube videos ids
+# use
+ruby yte.rb *ids
