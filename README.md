@@ -1,6 +1,3 @@
-# command line
-ruby yte.rb id1, id2, ...
-
 # embedding
     require_relative "ThumbnailDownloader"
     
