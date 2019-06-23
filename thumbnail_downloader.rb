@@ -21,11 +21,11 @@ class ThumbnailDownloader
 				url = "https://i.ytimg.com/vi/"+ids+"/maxresdefault.jpg"
 				file_size = 0
 				progress = {
-					:progress_proc => -> (pro) do
-						print "#{ids} => #{pro/1000}KBs    \r"
-					end,
 					:content_length_proc => -> (length) do
 						file_size = length
+					end,
+					:progress_proc => -> (pro) do
+						print "#{ids} => #{pro/1000}/#{file_size/1000} KiBs    \r"
 					end
 				}
 				open(url, progress) do |request|
@@ -33,7 +33,7 @@ class ThumbnailDownloader
 						file.write request.read
 					end
 				end
-				puts "#{ids} => #{file_size/1000}KBs    \r"
+				puts "#{ids} => #{file_size/1000}/#{file_size/1000} KiBs    \r"
 			end	
 		rescue OpenURI::HTTPError => error
 			puts "#{@current_id} => #{error.message}"
